@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>WhatsApp</title><script src="config.js"></script></head>
+<body style="font:16px system-ui;padding:24px">
+<p id="m">A abrir o WhatsApp…</p>
+<script>
+var p=new URLSearchParams(location.search),d=p.get('d')||'',l=(p.get('l')||'pt').slice(0,2);
+var T={pt:'Olá! Vi a prévia do site ({d}) e quero saber mais.',en:"Hi! I saw the website preview ({d}) and I'd like to know more.",
+es:'¡Hola! He visto la vista previa de la web ({d}) y quiero saber más.',it:"Ciao! Ho visto l'anteprima del sito ({d}) e vorrei saperne di più.",
+fr:"Bonjour ! J'ai vu l'aperçu du site ({d}) et j'aimerais en savoir plus.",de:'Hallo! Ich habe die Website-Vorschau ({d}) gesehen und möchte mehr wissen.'};
+var n=(window.RADAR&&RADAR.whatsapp)||'';
+var u='https://wa.me/'+n+'?text='+encodeURIComponent((T[l]||T.en).replace('{d}',d));
+document.getElementById('m').innerHTML='<a href="'+u+'">WhatsApp</a>';
+location.replace(u);
+</script></body></html>
