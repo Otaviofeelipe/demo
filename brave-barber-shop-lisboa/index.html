@@ -33,7 +33,7 @@ a{color:inherit}
 .lnk{display:inline-flex;align-items:center;gap:6px;font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px;opacity:.9}
 .lnk svg{width:16px;height:16px}
 .hero{position:relative;overflow:hidden}
-.nome{font-family:var(--titulo);font-weight:var(--peso-titulo,700);line-height:.95;letter-spacing:var(--esp-titulo,0);font-size:clamp(44px,12vw,108px);overflow-wrap:break-word}
+.nome{font-family:var(--titulo);font-weight:var(--peso-titulo,700);line-height:.95;letter-spacing:var(--esp-titulo,0);font-size:clamp(44px,12vw,108px);overflow-wrap:normal;min-width:0;max-width:100%}
 .tipo{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.85}
 .estrelas{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600}
 .estrelas i{font-style:normal;letter-spacing:2px;color:var(--estrela)}
@@ -240,11 +240,10 @@ html.captura .mapa iframe{display:none}
   if(/[?&]captura=1/.test(location.search)) h.classList.add('captura');
   function ajustar(){
     document.querySelectorAll('[data-ajustar]').forEach(function(el){
-      el.style.fontSize='';
-      var cs=parseFloat(getComputedStyle(el).fontSize), lh=cs*1.0, max=2;
-      var w=el.parentElement.clientWidth;
-      var tries=0;
-      while((el.scrollWidth>w+2 || el.offsetHeight>lh*max*1.12) && cs>22 && tries<60){cs-=2;el.style.fontSize=cs+'px';lh=cs;tries++;}
+      el.style.fontSize=''; el.style.overflowWrap='normal';
+      var cs=parseFloat(getComputedStyle(el).fontSize), tries=0;
+      while((el.scrollWidth>el.clientWidth+1 || el.offsetHeight>cs*2.25) && cs>22 && tries<90){cs-=2;el.style.fontSize=cs+'px';tries++;}
+      if(el.scrollWidth>el.clientWidth+1) el.style.overflowWrap='anywhere';
     });
   }
   ajustar(); window.addEventListener('resize',ajustar);
