@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Sites feitos pelo Otávio · Vértice</title>
-<meta name="description" content="Sites reais de negócios locais: um restaurante e consultórios médicos. Veja como ficam no telemóvel.">
+<meta name="description" content="Sites reais de negócios locais: restaurante, stand de automóveis, consultórios médicos e uma agência. Veja como ficam no telemóvel.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vértice">
 <meta property="og:title" content="Sites feitos pelo Otávio · Vértice">
-<meta property="og:description" content="Sites reais de negócios locais: um restaurante e consultórios médicos. Veja como ficam no telemóvel.">
+<meta property="og:description" content="Sites reais de negócios locais: restaurante, stand de automóveis, consultórios médicos e uma agência. Veja como ficam no telemóvel.">
 <meta property="og:url" content="https://otaviofeelipe.github.io/demo/portfolio/pt/">
 <meta property="og:image" content="https://otaviofeelipe.github.io/demo/portfolio/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -40,7 +40,18 @@ h1 em{font-style:normal;background:linear-gradient(92deg,var(--ciano),var(--azul
 .sub{margin:20px 0 0;max-width:44ch;color:var(--txt2);font-size:clamp(16px,2.3vw,19px)}
 .sites{list-style:none;margin:0 auto;padding:52px 16px 0;max-width:1180px;display:grid;gap:84px}
 .site{display:grid;gap:28px;align-items:center}
-.aparelhos{position:relative;display:block;justify-self:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.vitrine{display:grid;justify-items:center;gap:16px;min-width:0}
+.aparelhos{position:relative;display:block;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.tela .vp,.barra .vp{display:none}
+.painel-on .tela .vs,.painel-on .barra .vs{display:none}
+.painel-on .tela .vp{display:block}
+.painel-on .barra .vp{display:inline-block}
+.modos{display:inline-flex;gap:2px;padding:4px;border:1px solid var(--linha);border-radius:999px;background:rgba(14,21,48,.7)}
+.modo{appearance:none;border:0;background:none;color:var(--txt2);font:700 14px/1 inherit;padding:11px 18px;border-radius:999px;cursor:pointer}
+.modo[aria-pressed=true]{color:#05080F;background:linear-gradient(90deg,var(--ciano),#6ab8ff)}
+.modo:focus-visible{outline:2px solid var(--ciano);outline-offset:2px}
+.exemplo{display:none;margin:-4px 0 0;max-width:36ch;text-align:center;font-size:12.5px;line-height:1.45;color:var(--txt2)}
+.painel-on .exemplo{display:block}
 .fone{position:relative;width:min(68vw,284px);aspect-ratio:9/19;border-radius:42px;padding:9px;
   background:linear-gradient(150deg,#39456a,#0d1328 50%,#1d2745);
   box-shadow:inset 0 0 0 1px rgba(124,243,255,.2),0 44px 70px -30px rgba(0,0,0,.95),0 0 100px -38px rgba(124,243,255,.55)}
@@ -90,8 +101,10 @@ footer svg{width:16px;height:18px}
   .sites{gap:120px;padding-top:80px}
   .site{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:64px}
   .site:nth-child(even){grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
-  .site:nth-child(even) .aparelhos{order:2}
-  .aparelhos{justify-self:stretch;padding:0 0 56px}
+  .site:nth-child(even) .vitrine{order:2}
+  .vitrine{justify-items:stretch}
+  .aparelhos{padding:0 0 56px}
+  .modos,.exemplo{justify-self:center}
   .janela{display:block;border-radius:14px;overflow:hidden;background:#0d1328;
     box-shadow:0 0 0 1px var(--linha),0 60px 100px -46px rgba(0,0,0,.95),0 0 120px -60px rgba(124,243,255,.45)}
   .barra{display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;background:#121a33;border-bottom:1px solid var(--linha)}
@@ -145,30 +158,57 @@ footer svg{width:16px;height:18px}
  <ol class="sites">
  
   <li class="site">
+   <div class="vitrine">
    <a class="aparelhos" href="https://casaparisgastronomia.com.br" target="_blank" rel="noopener" aria-label="Abrir o site: Casa Paris Gastronomia">
-    <div class="janela"><div class="barra"><i></i><i></i><i></i><span>casaparisgastronomia.com.br</span></div>
-     <div class="tela"><img data-src="../img/casaparisgastronomia-d.webp" width="1200" height="2833" alt="Casa Paris Gastronomia: o site no computador" decoding="async"></div></div>
-    <div class="fone"><div class="tela"><div class="vista"><img src="../img/casaparisgastronomia-m.webp" width="600" height="6462" alt="Casa Paris Gastronomia: o site no telemóvel" decoding="async"></div></div></div>
+    <div class="janela"><div class="barra"><i></i><i></i><i></i><span class="vs">casaparisgastronomia.com.br</span><span class="vp">Painel de gestão · Casa Paris Gastronomia</span></div>
+     <div class="tela"><img class="vs" data-src="../img/casaparisgastronomia-d.webp" width="1200" height="2833" alt="Casa Paris Gastronomia: o site no computador" decoding="async"><img class="vp" data-src="../img/casaparisgastronomia-painel.webp" width="1200" height="1250" alt="Casa Paris Gastronomia: painel de gestão com dados de exemplo" decoding="async"></div></div>
+    <div class="fone"><div class="tela"><div class="vista"><img class="vs" src="../img/casaparisgastronomia-m.webp" width="600" height="6462" alt="Casa Paris Gastronomia: o site no telemóvel" decoding="async"><img class="vp" data-src="../img/casaparisgastronomia-painel-m.webp" width="600" height="3692" alt="Casa Paris Gastronomia: painel de gestão com dados de exemplo" decoding="async"></div></div></div>
     <span class="brilho"></span>
    </a>
+   <div class="modos" role="group" aria-label="Site / Painel de gestão"><button type="button" class="modo" data-modo="site" aria-pressed="true">Site</button><button type="button" class="modo" data-modo="painel" aria-pressed="false">Painel de gestão</button></div>
+   <p class="exemplo">Painel mostrado com dados de exemplo. O verdadeiro tem senha e só a equipa entra.</p>
+   </div>
    <div class="info">
     <p class="num">01</p>
     <h2>Casa Paris Gastronomia</h2>
     <p class="tipo"><b>Refeições congeladas do chef Gilson Paris</b>Ribeirão Preto, Brasil</p>
-    <ul class="destaques"><li>Pedido feito no próprio site</li><li>Pagamento online</li><li>Menu com fotos e preços</li></ul>
+    <ul class="destaques"><li>Pedido feito no próprio site</li><li>Pagamento online</li><li>Menu com fotos e preços</li><li>Painel de pedidos para a equipa</li></ul>
     <a class="abrir" href="https://casaparisgastronomia.com.br" target="_blank" rel="noopener">Abrir o site ↗<span>casaparisgastronomia.com.br</span></a>
    </div>
   </li>
  
   <li class="site">
-   <a class="aparelhos" href="https://drarthurgregorio.com.br" target="_blank" rel="noopener" aria-label="Abrir o site: Dr. Arthur Gregório Valério">
-    <div class="janela"><div class="barra"><i></i><i></i><i></i><span>drarthurgregorio.com.br</span></div>
-     <div class="tela"><img data-src="../img/drarthurgregorio-d.webp" width="1200" height="2833" alt="Dr. Arthur Gregório Valério: o site no computador" decoding="async"></div></div>
-    <div class="fone"><div class="tela"><div class="vista"><img src="../img/drarthurgregorio-m.webp" width="600" height="6462" alt="Dr. Arthur Gregório Valério: o site no telemóvel" decoding="async" loading="lazy"></div></div></div>
+   <div class="vitrine">
+   <a class="aparelhos" href="https://cunhamotorssc.com.br" target="_blank" rel="noopener" aria-label="Abrir o site: Cunha Motors">
+    <div class="janela"><div class="barra"><i></i><i></i><i></i><span class="vs">cunhamotorssc.com.br</span><span class="vp">Painel de gestão · Cunha Motors</span></div>
+     <div class="tela"><img class="vs" data-src="../img/cunhamotorssc-d.webp" width="1200" height="2833" alt="Cunha Motors: o site no computador" decoding="async"><img class="vp" data-src="../img/cunhamotorssc-painel.webp" width="1200" height="1250" alt="Cunha Motors: painel de gestão com dados de exemplo" decoding="async"></div></div>
+    <div class="fone"><div class="tela"><div class="vista"><img class="vs" src="../img/cunhamotorssc-m.webp" width="600" height="6462" alt="Cunha Motors: o site no telemóvel" decoding="async" loading="lazy"><img class="vp" data-src="../img/cunhamotorssc-painel-m.webp" width="600" height="3692" alt="Cunha Motors: painel de gestão com dados de exemplo" decoding="async"></div></div></div>
     <span class="brilho"></span>
    </a>
+   <div class="modos" role="group" aria-label="Site / Painel de gestão"><button type="button" class="modo" data-modo="site" aria-pressed="true">Site</button><button type="button" class="modo" data-modo="painel" aria-pressed="false">Painel de gestão</button></div>
+   <p class="exemplo">Painel mostrado com dados de exemplo. O verdadeiro tem senha e só a equipa entra.</p>
+   </div>
    <div class="info">
     <p class="num">02</p>
+    <h2>Cunha Motors</h2>
+    <p class="tipo"><b>Stand de automóveis seminovos</b>São Carlos, Brasil</p>
+    <ul class="destaques"><li>Stock sempre atualizado</li><li>Pesquisa por marca, modelo e preço</li><li>Painel para a equipa mudar fotos e preços</li></ul>
+    <a class="abrir" href="https://cunhamotorssc.com.br" target="_blank" rel="noopener">Abrir o site ↗<span>cunhamotorssc.com.br</span></a>
+   </div>
+  </li>
+ 
+  <li class="site">
+   <div class="vitrine">
+   <a class="aparelhos" href="https://drarthurgregorio.com.br" target="_blank" rel="noopener" aria-label="Abrir o site: Dr. Arthur Gregório Valério">
+    <div class="janela"><div class="barra"><i></i><i></i><i></i><span class="vs">drarthurgregorio.com.br</span></div>
+     <div class="tela"><img class="vs" data-src="../img/drarthurgregorio-d.webp" width="1200" height="2833" alt="Dr. Arthur Gregório Valério: o site no computador" decoding="async"></div></div>
+    <div class="fone"><div class="tela"><div class="vista"><img class="vs" src="../img/drarthurgregorio-m.webp" width="600" height="6462" alt="Dr. Arthur Gregório Valério: o site no telemóvel" decoding="async" loading="lazy"></div></div></div>
+    <span class="brilho"></span>
+   </a>
+   
+   </div>
+   <div class="info">
+    <p class="num">03</p>
     <h2>Dr. Arthur Gregório Valério</h2>
     <p class="tipo"><b>Consultório médico: homeopatia e psicanálise</b>São Carlos, Brasil</p>
     <ul class="destaques"><li>Marcação de consultas pelo WhatsApp</li><li>Cada serviço explicado</li><li>Testemunhos de pacientes</li></ul>
@@ -177,18 +217,40 @@ footer svg{width:16px;height:18px}
   </li>
  
   <li class="site">
+   <div class="vitrine">
    <a class="aparelhos" href="https://dralaravalerio.com.br" target="_blank" rel="noopener" aria-label="Abrir o site: Dra. Lara Valério">
-    <div class="janela"><div class="barra"><i></i><i></i><i></i><span>dralaravalerio.com.br</span></div>
-     <div class="tela"><img data-src="../img/dralaravalerio-d.webp" width="1200" height="2833" alt="Dra. Lara Valério: o site no computador" decoding="async"></div></div>
-    <div class="fone"><div class="tela"><div class="vista"><img src="../img/dralaravalerio-m.webp" width="600" height="6462" alt="Dra. Lara Valério: o site no telemóvel" decoding="async" loading="lazy"></div></div></div>
+    <div class="janela"><div class="barra"><i></i><i></i><i></i><span class="vs">dralaravalerio.com.br</span></div>
+     <div class="tela"><img class="vs" data-src="../img/dralaravalerio-d.webp" width="1200" height="2833" alt="Dra. Lara Valério: o site no computador" decoding="async"></div></div>
+    <div class="fone"><div class="tela"><div class="vista"><img class="vs" src="../img/dralaravalerio-m.webp" width="600" height="6462" alt="Dra. Lara Valério: o site no telemóvel" decoding="async" loading="lazy"></div></div></div>
     <span class="brilho"></span>
    </a>
+   
+   </div>
    <div class="info">
-    <p class="num">03</p>
+    <p class="num">04</p>
     <h2>Dra. Lara Valério</h2>
     <p class="tipo"><b>Consultório médico: homeopatia e medicina endocanabinoide</b>São Carlos, Brasil</p>
     <ul class="destaques"><li>Explicações interativas</li><li>Marcação de consultas</li><li>Horário e morada à vista</li></ul>
     <a class="abrir" href="https://dralaravalerio.com.br" target="_blank" rel="noopener">Abrir o site ↗<span>dralaravalerio.com.br</span></a>
+   </div>
+  </li>
+ 
+  <li class="site">
+   <div class="vitrine">
+   <a class="aparelhos" href="https://pquadrado.com.br" target="_blank" rel="noopener" aria-label="Abrir o site: Pquadrado">
+    <div class="janela"><div class="barra"><i></i><i></i><i></i><span class="vs">pquadrado.com.br</span></div>
+     <div class="tela"><img class="vs" data-src="../img/pquadrado-d.webp" width="1200" height="2833" alt="Pquadrado: o site no computador" decoding="async"></div></div>
+    <div class="fone"><div class="tela"><div class="vista"><img class="vs" src="../img/pquadrado-m.webp" width="600" height="6462" alt="Pquadrado: o site no telemóvel" decoding="async" loading="lazy"></div></div></div>
+    <span class="brilho"></span>
+   </a>
+   
+   </div>
+   <div class="info">
+    <p class="num">05</p>
+    <h2>Pquadrado</h2>
+    <p class="tipo"><b>Agência de marketing e publicidade</b>São Carlos, Brasil</p>
+    <ul class="destaques"><li>Animação na abertura</li><li>Casos de clientes</li><li>Vídeo institucional</li></ul>
+    <a class="abrir" href="https://pquadrado.com.br" target="_blank" rel="noopener">Abrir o site ↗<span>pquadrado.com.br</span></a>
    </div>
   </li>
  
@@ -216,7 +278,7 @@ footer svg{width:16px;height:18px}
   var largo = window.matchMedia('(min-width: 920px)');
   function carregaComputador() {
     if (!largo.matches) return;
-    document.querySelectorAll('img[data-src]').forEach(function (i) { i.src = i.getAttribute('data-src'); i.removeAttribute('data-src'); });
+    document.querySelectorAll('.janela img.vs[data-src], .painel-on .janela img.vp[data-src]').forEach(function (i) { i.src = i.getAttribute('data-src'); i.removeAttribute('data-src'); });
   }
   carregaComputador();
   if (largo.addEventListener) largo.addEventListener('change', carregaComputador);
@@ -224,11 +286,28 @@ footer svg{width:16px;height:18px}
   var imgs = [].slice.call(document.querySelectorAll('.tela img'));
   function mede(img) {
     var d = img.getBoundingClientRect().height - img.parentNode.clientHeight;
-    if (d > 0) { img.style.setProperty('--d', Math.round(d)); img.style.setProperty('--dur', Math.max(12, Math.round(d / 75)) + 's'); }
+    if (d <= 0 || img.style.getPropertyValue('--d') === String(Math.round(d))) return;
+    img.style.setProperty('--d', Math.round(d)); img.style.setProperty('--dur', Math.max(12, Math.round(d / 75)) + 's');
+    img.style.animation = 'none'; void img.offsetHeight; img.style.animation = '';   // recomeça com a distância nova
   }
   imgs.forEach(function (img) {
     if (img.complete && img.naturalHeight) mede(img);
     img.addEventListener('load', function () { mede(img); });
+  });
+  // chave Site | Painel (Casa Paris, Cunha Motors): troca as telas; o print do painel só baixa quando pedem
+  document.querySelectorAll('.modos').forEach(function (g) {
+    var site = g.closest('.site');
+    g.addEventListener('click', function (e) {
+      var b = e.target.closest('.modo'); if (!b) return;
+      var painel = b.getAttribute('data-modo') === 'painel';
+      g.querySelectorAll('.modo').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      site.classList.toggle('painel-on', painel);
+      if (painel) site.querySelectorAll('img.vp[data-src]').forEach(function (i) {
+        if (i.closest('.janela') && !largo.matches) return;
+        i.src = i.getAttribute('data-src'); i.removeAttribute('data-src');
+      });
+      site.querySelectorAll('.tela img').forEach(function (i) { if (i.naturalHeight) mede(i); });
+    });
   });
   var t;
   window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(function () { imgs.forEach(mede); }, 200); });
